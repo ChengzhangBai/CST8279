@@ -27,6 +27,7 @@ def displayObject(obj, x, y):
             xp += 1
         y += 1
         lcd.set_pixel(xp, y, pixel)
+        xp = x
     lcd.show()
     
 displayObject(f1, 16, 9)
