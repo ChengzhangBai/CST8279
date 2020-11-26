@@ -25,9 +25,9 @@ def txt2csv(file):
             if len(number) == 0:
                 number = 'N/A'
             data = ''.join(name) + ',' + ''.join(number) + '\n'
-        if data not in lines_exist: #the duplicated entries will not be added
+        if data not in lines_exist: #write the line to csv file if no uplicated entry found
             f2.write(data)
-            lines_exist.add(data)
+            lines_exist.add(data)   #update the set
         else:
             duplicate_num += 1
             print('"%s" skipped as it already exists.'%data.replace("\n",""))
