@@ -1,5 +1,7 @@
 #Author: Chengzhang Bai @AC
 #Date: Nov. 27, 2020
+#Not using gfx hat
+
 import click
 
 def generateDictionary():
