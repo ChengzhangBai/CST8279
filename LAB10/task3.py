@@ -84,8 +84,8 @@ def displayText(text,lcd,x,y):
 
 
 def hex2bin(hexValue): #convert hex value to binary value, format of hexValue: 0x3C00000000000000
-    hexValueList = list(hexValue[2:]) # delete 0x
-    binValueList = [] #change hexvalue to list in order to loop
+    hexValueList = list(hexValue[2:]) # delete the leading 0x, and change hexvalue to list in order to loop
+    binValueList = [] 
     for i in hexValueList:
         binValue = bin(int(i, 16))[2:].zfill(4)  #delete the leading 0b, then fill each binary value with 0 if it is less than 4 digits
         binValueList.append(binValue)
