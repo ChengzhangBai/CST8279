@@ -13,8 +13,8 @@ def generateDictionary():
         else:
             line1 = line1.replace("\n","").split(",")#delete the end of line symbol, and split the two items into list
         char = line1[1]# line1[1]: char in font3.txt, e.g. A
-        value = hex2bin(line1[0])# line1[0]: hex value of char in font3.txt, e.g. 0x3C00000000000000
-        # split the 64-digit binary list into 8*8 form
+        value = hex2bin(line1[0])# line1[0]: hex value of char in font3.txt, e.g. 0x3C00000000000000, value: a 64-digit binary number
+        # split the 64-digit binary number into 8*8 form
         list = []
         for i in range(0, 8):
             for j in range(0, 8):
