@@ -23,7 +23,7 @@ def hex2bin(hexValue): #convert hex value to binary value, format of hexValue: 0
     hexValueList = list(hexValue[2:]) # delete 0x
     binValueList = [] #change hexvalue to list in order to loop
     for i in hexValueList:
-        binValue = bin(int(i, 16))[2:].zfill(4) #delete ob, then convert each hex value to binary value with 4 digits
+        binValue = bin(int(i, 16))[2:].zfill(4) #delete the leading 0b, then fill each binary value with 0 if it is less than 4 digits
         binValueList.append(binValue)
     binValue = ''.join(binValueList)
     #print(hexValue,binValue)
