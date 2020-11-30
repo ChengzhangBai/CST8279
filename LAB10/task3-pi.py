@@ -57,10 +57,10 @@ def displayText(text,lcd,x,y):
 
 
 def hex2bin(hexValue): #convert hex value to binary value, format of hexValue: 0x3C00000000000000
-    hexValueList = list(hexValue[2:]) # delete 0x
+    hexValueList = list(hexValue[2:]) # delete the leading 0x
     binValueList = [] #change hexvalue to list in order to loop
     for i in hexValueList:
-        binValue = bin(int(i, 16))[2:].zfill(4) #delete ob, then convert each hex value to binary value with 4 digits
+        binValue = bin(int(i, 16))[2:].zfill(4)  #delete the leading 0b, then fill each binary value with 0 if it is less than 4 digits
         binValueList.append(binValue)
     binValue = ''.join(binValueList)
     #print(hexValue,binValue)
@@ -84,13 +84,13 @@ def bitmapInHat():
                     list.append(int(binValue[i * 8 + j])) #change the binary value from str to list
             chunks = [list[x:x + 8] for x in range(0, len(list),8)]  # Split the 64 digits in the list into 8*8 chunks, thanks to: https://stackoverflow.com/questions/9671224/split-a-python-list-into-other-sublists-i-e-smaller-lists
             #print(chunks) #sample of chunks: [[1, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [1, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]]
-            displayObject(chunks, 16, 9)
+            displayObject(chunks, 3, 3)
             n = 1
             break
     if n == 0:
         msg = "The key you input isn't recorded in the dictionary."
         clearScreen(lcd)
-        displayText(msg, lcd, 2, 10)
+        displayText(msg, lcd, 2, 6)
         print(msg)
 
 
