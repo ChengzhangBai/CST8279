@@ -13,8 +13,8 @@ def generateDictionary():
         else:
             line1 = line1.replace("\n","").split(",")#delete the end of line symbol, and split the two items into list
         char = line1[1]# line1[1]: char in font3.txt, e.g. A
-        value = hex2bin(line1[0])# line1[0]: hex value of char in font3.txt, e.g. 0x3C00000000000000, value: a 64-digit binary number
-        # split the 64-digit binary number into 8*8 form
+        value = hex2bin(line1[0])# line1[0]: hex value of char in font3.txt, e.g. 0x3C00000000000000
+        # split the 64-digit binary list into 8*8 form
         list = []
         for i in range(0, 8):
             for j in range(0, 8):
@@ -49,13 +49,7 @@ def bitmapInHat():
     for key in chars.keys():
         if key == c:
             binValue = chars[key]
-            list = []
-            for i in range(0, 8):
-                for j in range(0, 8):
-                    list.append(int(binValue[i * 8 + j])) #change the binary value from str to list
-            chunks = [list[x:x + 8] for x in range(0, len(list),8)]  # Split the 64 digits in the list into 8*8 chunks, thanks to: https://stackoverflow.com/questions/9671224/split-a-python-list-into-other-sublists-i-e-smaller-lists
-            print(chunks)
-
+            print(binValue)
             n = 1
             break
     if n == 0:
