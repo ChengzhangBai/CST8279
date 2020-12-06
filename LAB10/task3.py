@@ -94,23 +94,26 @@ def hex2bin(hexValue): #convert hex value to binary value, format of hexValue: 0
 
 
 def bitmapInHat():
-    chars = generateDictionary() #put the dictionary to the variable chars
-    print('Please press a key: ')
-    c = click.getchar()
-    print(c)
-    n = 0
-    for key in chars.keys():
-        if key == c:
+    while True:
+        chars = generateDictionary() #put the dictionary to the variable chars
+        print('Please press a key, press Esc to quit the program: ')
+        c = click.getchar()
+        if c == '\x1b':
+            quit()
+        print(c)
+        n = 0
+        for key in chars.keys(): #if the key entered is in the array
+            if key == c:
+                clearScreen(lcd)
+                binValue = chars[key]
+                displayObject(binValue, 2, 2)
+                n = 1
+                break
+        if n == 0: #if the key entered is not in the array
+            msg = "The key you input isn't recorded in the dictionary."
             clearScreen(lcd)
-            binValue = chars[key]
-            displayObject(binValue, 2, 2)
-            n = 1
-            break
-    if n == 0:
-        msg = "The key you input isn't recorded in the dictionary."
-        clearScreen(lcd)
-        displayText(msg, lcd, 2, 10)
-        print(msg)
+            displayText(msg, lcd, 2, 10)
+            print(msg)
 
 
 bitmapInHat()
